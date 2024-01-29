@@ -68,7 +68,7 @@ function Screen(props: Props) {
           style={{ fontSize: 50, color: "white", marginTop: 100 }}
         >
           <span>Create your own qiuz at</span>
-          <span style={{ color: "#FFBF00" }}>https://quizframe.xyz/</span>
+          <span style={{ color: "#FFBF00" }}>https://heyportals.vercel.app/</span>
         </div>
       </div>
     );
