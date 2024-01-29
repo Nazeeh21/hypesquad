@@ -27,14 +27,14 @@ export default function UI({
         <meta property="hey:portal:image" content={image} />
         {buttons.map((button, index) => (
           <meta
-            key={button}
+            key={index}
             property={`hey:portal:button:${index + 1}`}
             content={button}
           />
         ))}
         {buttons.map((button, index) => (
           <meta
-            key={button}
+            key={index}
             property={`hey:portal:button:${index + 1}:type`}
             content="submit"
           />
