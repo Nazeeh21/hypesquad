@@ -32,13 +32,6 @@ export default function UI({
             content={button}
           />
         ))}
-        {buttons.map((button, index) => (
-          <meta
-            key={index}
-            property={`hey:portal:button:${index + 1}:type`}
-            content="submit"
-          />
-        ))}
         <meta property="hey:portal:post_url" content={action} />
       </Head>
       <form
