@@ -23,16 +23,23 @@ export default function UI({
       <Head>
         <meta property="og:title" content="Frame" />
         <meta property="og:image" content={image} />
-        <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content={image} />
+        <meta property="hey:portal" content="vNext" />
+        <meta property="hey:portal:image" content={image} />
         {buttons.map((button, index) => (
-          <meta
-            key={button}
-            property={`fc:frame:button:${index + 1}`}
-            content={button}
-          />
+          <>
+            <meta
+              key={button}
+              property={`hey:portal:button:${index + 1}`}
+              content={button}
+            />
+            <meta
+              key={button}
+              property={`hey:portal:button:${index + 1}:type`}
+              content="submit"
+            />
+          </>
         ))}
-        <meta property="fc:frame:post_url" content={action} />
+        <meta property="hey:portal:post_url" content={action} />
       </Head>
       <form
         action={action}
