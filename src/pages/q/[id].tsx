@@ -79,7 +79,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const id = z.object({ id: z.string() }).parse(ctx.params);
   const quiz = quizSchema.parse(await redis.get(id.id));
 
-  let state: z.infer<typeof schema> = { index: 0, traitsScore: null, selected: null };
+  let state: z.infer<typeof schema> = {
+    index: 0,
+    traitsScore: null,
+    selected: null,
+  };
   try {
     state = StateData.parse(url.searchParams.get("state"));
   } catch (e) {}
@@ -101,7 +105,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   }
 
   if (buttonIndex) {
-    state = game(quiz, state, buttonIndex);
+    state = game(quiz, state, buttonIndex + 1);
   }
 
   const { props, buttons } = render(quiz, state);
@@ -127,23 +131,17 @@ function game(quiz: Quiz, state: State, action: number): State {
   }
 
   if (state.index > quiz.questions.length) {
-    return { index: 0, selected: null, traitsScore: null};
+    return { index: 0, selected: null, traitsScore: null };
   }
 
-  if (state.selected == null) {
-    return { ...state, selected: action - 1 };
-  }
 
-  let score = state.traitsScore ?? {};  
-  const currentTrait = quiz.questions[state.index - 1].answers[state.selected].trait
-
-  score[currentTrait] = (
-    score[currentTrait] ??
-    0
-  ) + 1;
+    let score = state.traitsScore ?? {};
+    const currentTrait =
+      quiz.questions[state.index - 1].answers[action-2].trait;
+    score[currentTrait] = (score[currentTrait] ?? 0) + 1;
 
 
-  return { index: state.index + 1, selected: null, traitsScore: score };
+    return { index: state.index + 1, selected: null, traitsScore: score };
 }
 
 function render(
@@ -168,7 +166,9 @@ function render(
 
   const question = quiz.questions[state.index - 1];
   if (!question) {
-    let highestScoreTrait = Object.entries(state.traitsScore ?? {}).reduce((a, b) => (b[1] > a[1] ? b : a))[0];
+    let highestScoreTrait = Object.entries(state.traitsScore ?? {}).reduce(
+      (a, b) => (b[1] > a[1] ? b : a)
+    )[0];
     return {
       props: {
         v: 1,
@@ -181,8 +181,7 @@ function render(
     };
   }
 
-
-  const answers = question.answers.flatMap(({answer}) => answer);
+  const answers = question.answers.flatMap(({ answer }) => answer);
   if (state.selected == null) {
     return {
       props: {
