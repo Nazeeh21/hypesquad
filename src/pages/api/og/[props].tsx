@@ -18,13 +18,12 @@ const schema = z.object({
       selection: z
         .object({
           selected: z.number(),
-          correct: z.number(),
         })
         .nullable(),
     }),
     z.object({
       type: z.literal("result"),
-      win: z.boolean(),
+      house: z.string(),
     }),
   ]),
 });
@@ -61,7 +60,7 @@ function Screen(props: Props) {
           tw="absolute w-full h-full"
         />
         <div style={{ fontSize: 100, color: "white" }}>
-          {props.state.win ? "You win!" : "You lose!"}
+          {props.state.house}
         </div>
         <div
           tw="flex flex-col items-center text-center"
@@ -90,8 +89,8 @@ function Screen(props: Props) {
         tw="absolute w-full h-full"
       /> */}
       <WWTBAMUI
-        green={selection && selection.correct}
-        red={selection && selection.selected}
+        green={selection?.selected ?? null}
+        // red={selection && selection.selected}
       />
       <div
         tw="absolute flex items-center justify-center text-center text-white text-5xl overflow-hidden"
@@ -140,7 +139,7 @@ function WWTBAMUI({
   red,
 }: {
   green: number | null;
-  red: number | null;
+  red?: number | null;
 }) {
   return (
     <svg
