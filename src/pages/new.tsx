@@ -23,11 +23,14 @@ export type OrderStatus = "none" | "uploading" | "processing" | "completed";
 
 const columns: GridColumn[] = [
   { title: "Question", width: 250, grow: 1 },
-  { title: "A", width: 150 },
-  { title: "B", width: 150 },
-  { title: "C", width: 150 },
-  { title: "D", width: 150 },
-  { title: "Answer", width: 80 },
+  { title: "Option A", width: 150 },
+  { title: "Option A Trait", width: 150 },
+  { title: "Option B", width: 150 },
+  { title: "Option B Trait", width: 150 },
+  { title: "Option C", width: 150 },
+  { title: "Option C Trait", width: 150 },
+  { title: "Option D", width: 150 },
+  { title: "Option D Trait", width: 150 },
 ];
 
 export default function New() {
@@ -35,9 +38,13 @@ export default function New() {
     "questions-2",
     [
       {
-        question: "What is the capital of France?",
-        answers: ["Berlin", "Madrid", "Paris", "Rome"],
-        correct: 2,
+        question: "Which insult would hurt you the most?",
+        answers: [
+          { answer: "You overreact a lot", trait: "Bravery" },
+          { answer: "You don’t listen enough", trait: "Brilliance" },
+          { answer: "You only care about yourself.", trait: "Brilliance" },
+          { answer: "You’re ordinary", trait: "Innovation" },
+        ],
       },
     ]
   );
@@ -66,11 +73,14 @@ export default function New() {
 
       const data = [
         question.question,
-        question.answers[0],
-        question.answers[1],
-        question.answers[2],
-        question.answers[3],
-        "ABCD".charAt(question.correct),
+        question.answers[0].answer ?? "",
+        question.answers[0].trait  ?? "",
+        question.answers[1].answer  ?? "",
+        question.answers[1].trait  ?? "",
+        question.answers[2].answer  ?? "",
+        question.answers[2].trait  ?? "",
+        question.answers[3].answer  ?? "",
+        question.answers[3].trait  ?? "",
       ][col];
       return {
         kind: GridCellKind.Text,
@@ -92,12 +102,13 @@ export default function New() {
         if (col === 0) {
           question.question = value;
         }
-        if (col <= 4) {
-          question.answers[col - 1] = value;
+        if (col % 2 === 1) {
+          const prevValue = question.answers[col - 1];
+          question.answers[col - 1] = { ...prevValue, answer: value };
         }
-        if (col === 5) {
-          const newIndex = "ABCD".indexOf(value.toUpperCase());
-          question.correct = newIndex === -1 ? question.correct : newIndex;
+        if (col % 2 === 0) {
+          const prevValue = question.answers[col - 1];
+          question.answers[col - 1] = { ...prevValue, trait: value };
         }
         return [
           ...questions.slice(0, row),
@@ -112,7 +123,15 @@ export default function New() {
     () =>
       setQuestions((questions) => [
         ...questions,
-        { question: "New question?", answers: ["", "", "", ""], correct: 0 },
+        {
+          question: "New question?",
+          answers: [
+            { answer: "", trait: "" },
+            { answer: "", trait: "" },
+            { answer: "", trait: "" },
+            { answer: "", trait: "" },
+          ],
+        },
       ]),
     []
   );
