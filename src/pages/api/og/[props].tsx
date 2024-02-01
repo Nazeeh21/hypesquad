@@ -75,10 +75,10 @@ function Screen(props: Props) {
 
   const buttons = ["A", "B", "C", "D"];
   const coords = [
-    { x: 40, y: 270 },
-    { x: 40, y: 370 },
-    { x: 40, y: 470 },
-    { x: 40, y: 570 },
+    { x: 100, y: 270 },
+    { x: 100, y: 370 },
+    { x: 100, y: 470 },
+    { x: 100, y: 570 },
   ];
   const { selection } = props.state;
   return (
@@ -87,9 +87,9 @@ function Screen(props: Props) {
         src="https://ucarecdn.com/086039b7-788c-45fe-8af3-9bec5d239a20/"
         tw="absolute w-full h-full"
       />
-      <WWTBAMUI
+      {/* <WWTBAMUI
         green={selection?.selected ?? null}
-      />
+      /> */}
       <div
         tw="absolute flex items-center justify-center text-center text-white text-5xl overflow-hidden"
         style={{ left: 164, top: 59, width: 859, height: 154 }}
@@ -101,19 +101,18 @@ function Screen(props: Props) {
         return (
           <div
             key={index}
-            tw="absolute flex items-center justify-start text-left text-white text-4xl overflow-auto"
+            tw="absolute w-[1000px] mb-6 flex items-center justify-start text-left text-white text-4xl overflow-y-auto"
             style={{
               left: coords[index].x,
               top: coords[index].y,
-              width: '100%',
               height: 85,
             }}
           >
             <span>
-              <span style={{ color: "#FFBF00", marginRight: 10 }}>
+              <span style={{ color: "#FFBF00", marginRight: 20 }}>
                 {buttons[index]}:
               </span>{" "}
-              {answer}
+              <span className="w-[300px]">{answer}</span>
             </span>
           </div>
         );
@@ -127,7 +126,7 @@ export default async function handler(req: NextRequest) {
   const props = ImageData.parse(searchParams.get("props"));
 
   return new ImageResponse(<Screen {...props} />, {
-    width: 1400,
+    width: 1200,
     height: 700,
   });
 }
@@ -141,7 +140,7 @@ function WWTBAMUI({
 }) {
   return (
     <svg
-      width="1600"
+      width="1200"
       height="700"
       viewBox="0 0 1200 630"
       fill="none"
