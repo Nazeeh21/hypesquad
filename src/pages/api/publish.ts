@@ -11,8 +11,8 @@ export const redis = new Redis({
 const questionSchema = z.object({
   question: z.string().min(1).max(100),
   answers: z.array(z.object({
-    answer: z.string().max(50),
-    trait: z.string().max(50),
+    answer: z.string().max(250),
+    trait: z.string().max(150),
   })).length(4),
 });
 

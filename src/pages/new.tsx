@@ -98,18 +98,18 @@ export default function New() {
       setQuestions((questions) => {
         const question: Question = JSON.parse(JSON.stringify(questions[row]));
         const value = cell.data?.toString() ?? "";
-
+  
         if (col === 0) {
           question.question = value;
+        } else {
+          const answerIndex = Math.floor((col - 1) / 2);
+          const isTrait = (col - 1) % 2 !== 0;
+          const prevValue = question.answers[answerIndex];
+          question.answers[answerIndex] = isTrait
+            ? { ...prevValue, trait: value }
+            : { ...prevValue, answer: value };
         }
-        if (col % 2 === 1) {
-          const prevValue = question.answers[col - 1];
-          question.answers[col - 1] = { ...prevValue, answer: value };
-        }
-        if (col % 2 === 0) {
-          const prevValue = question.answers[col - 1];
-          question.answers[col - 1] = { ...prevValue, trait: value };
-        }
+  
         return [
           ...questions.slice(0, row),
           question,
@@ -118,7 +118,6 @@ export default function New() {
       }),
     []
   );
-
   const onRowAppended = useCallback(
     () =>
       setQuestions((questions) => [

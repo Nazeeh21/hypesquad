@@ -175,7 +175,6 @@ function render(
         state: {
           type: "result",
           house: highestScoreTrait,
-          // win: state.score === quiz.questions.length,
         },
       },
       buttons: ["Play Again"],

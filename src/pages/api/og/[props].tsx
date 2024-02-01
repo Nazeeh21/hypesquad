@@ -75,26 +75,24 @@ function Screen(props: Props) {
 
   const buttons = ["A", "B", "C", "D"];
   const coords = [
-    { x: 123, y: 317 },
-    { x: 654, y: 317 },
-    { x: 123, y: 444 },
-    { x: 654, y: 444 },
+    { x: 40, y: 270 },
+    { x: 40, y: 370 },
+    { x: 40, y: 470 },
+    { x: 40, y: 570 },
   ];
-
   const { selection } = props.state;
   return (
     <div tw="relative bg-black w-full h-full flex flex-col items-center justify-center">
-      {/* <img
+      <img
         src="https://ucarecdn.com/086039b7-788c-45fe-8af3-9bec5d239a20/"
         tw="absolute w-full h-full"
-      /> */}
+      />
       <WWTBAMUI
         green={selection?.selected ?? null}
-        // red={selection && selection.selected}
       />
       <div
         tw="absolute flex items-center justify-center text-center text-white text-5xl overflow-hidden"
-        style={{ left: 164, top: 99, width: 859, height: 154 }}
+        style={{ left: 164, top: 59, width: 859, height: 154 }}
       >
         {props.state.question}
       </div>
@@ -103,11 +101,11 @@ function Screen(props: Props) {
         return (
           <div
             key={index}
-            tw="absolute flex items-center justify-start text-left text-white text-4xl overflow-hidden"
+            tw="absolute flex items-center justify-start text-left text-white text-4xl overflow-auto"
             style={{
               left: coords[index].x,
               top: coords[index].y,
-              width: 414,
+              width: '100%',
               height: 85,
             }}
           >
@@ -129,8 +127,8 @@ export default async function handler(req: NextRequest) {
   const props = ImageData.parse(searchParams.get("props"));
 
   return new ImageResponse(<Screen {...props} />, {
-    width: 1200,
-    height: 630,
+    width: 1400,
+    height: 700,
   });
 }
 
@@ -143,8 +141,8 @@ function WWTBAMUI({
 }) {
   return (
     <svg
-      width="1200"
-      height="630"
+      width="1600"
+      height="700"
       viewBox="0 0 1200 630"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
