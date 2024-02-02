@@ -1,1 +1,1 @@
-# Source code for [HypSquad]([https://quizframe.xyz/](https://hypesquad.vercel.app/)
+# Source code for [HypeSquad](https://hypesquad.vercel.app/)
