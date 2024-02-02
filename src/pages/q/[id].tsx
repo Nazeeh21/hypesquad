@@ -21,7 +21,7 @@ export default function UI({
   return (
     <>
       <Head>
-      <meta property="fc:frame" content="vLatest" />
+      <meta property="fc:frame" content="vNext" />
         <meta property="fc:frame:title" content="Frame" />
         <meta property="fc:frame:image" content={image} />
         <meta property="hey:portal" content="vLatest" />
