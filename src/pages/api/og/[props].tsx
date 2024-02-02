@@ -40,12 +40,12 @@ export const ImageData = {
 function Screen(props: Props) {
   if (props.state.type === "intro") {
     return (
-      <div tw="relative bg-black w-full h-full flex flex-col items-center justify-center">
+      <div tw="relative bg-black w-full h-full flex flex-col items-center text-black justify-center">
         <img
-          src="https://ucarecdn.com/086039b7-788c-45fe-8af3-9bec5d239a20/"
+          src="https://utfs.io/f/bc47bb64-67b1-4f38-b786-3f935a89463d-b70ida.jpg"
           tw="absolute w-full h-full"
         />
-        <div style={{ fontSize: 100, color: "white" }}>
+        <div style={{ fontSize: 100, marginTop: '1rem', color: "black" }}>
           {props.state.name ?? "Quiz"}
         </div>
       </div>
@@ -56,18 +56,18 @@ function Screen(props: Props) {
     return (
       <div tw="relative bg-black w-full h-full flex flex-col items-center justify-center">
         <img
-          src="https://ucarecdn.com/086039b7-788c-45fe-8af3-9bec5d239a20/"
+           src="https://utfs.io/f/bc47bb64-67b1-4f38-b786-3f935a89463d-b70ida.jpg"
           tw="absolute w-full h-full"
         />
-        <div style={{ fontSize: 100, color: "white" }}>
+        <div style={{ fontSize: 100, marginTop: '1rem', color: "black"  }}>
           {props.state.house}
         </div>
         <div
           tw="flex flex-col items-center text-center"
-          style={{ fontSize: 50, color: "white", marginTop: 100 }}
+          style={{ fontSize: 50, color: "black", marginTop: 100 }}
         >
           <span>Create your own qiuz at</span>
-          <span style={{ color: "#FFBF00" }}>https://heyportals.vercel.app/</span>
+          <span style={{ color: "#db2b1f" }}>https://hypesquad.vercel.app/</span>
         </div>
       </div>
     );
@@ -82,16 +82,16 @@ function Screen(props: Props) {
   ];
   const { selection } = props.state;
   return (
-    <div tw="relative bg-black w-full h-full flex flex-col items-center justify-center">
+    <div tw="relative bg-black w-full h-full text-black flex flex-col items-center justify-center">
       <img
-        src="https://ucarecdn.com/086039b7-788c-45fe-8af3-9bec5d239a20/"
+         src="https://utfs.io/f/bc47bb64-67b1-4f38-b786-3f935a89463d-b70ida.jpg"
         tw="absolute w-full h-full"
       />
       {/* <WWTBAMUI
         green={selection?.selected ?? null}
       /> */}
       <div
-        tw="absolute flex items-center justify-center text-center text-white text-5xl overflow-hidden"
+        tw="absolute flex items-center justify-center text-center text-5xl overflow-hidden"
         style={{ left: 164, top: 59, width: 859, height: 154 }}
       >
         {props.state.question}
@@ -101,7 +101,7 @@ function Screen(props: Props) {
         return (
           <div
             key={index}
-            tw="absolute w-[1000px] mb-6 flex items-center justify-start text-left text-white text-4xl overflow-y-auto"
+            tw="absolute w-[1000px] mb-6 flex items-center justify-start text-left text-4xl overflow-y-auto"
             style={{
               left: coords[index].x,
               top: coords[index].y,
@@ -109,7 +109,7 @@ function Screen(props: Props) {
             }}
           >
             <span>
-              <span style={{ color: "#FFBF00", marginRight: 20 }}>
+              <span style={{ color: "#db2b1f", marginRight: 20 }}>
                 {buttons[index]}:
               </span>{" "}
               <span className="w-[300px]">{answer}</span>
