@@ -34,7 +34,7 @@ export default function Component() {
               </Link>
               <Link
                 className="inline-flex h-10 items-center justify-center rounded-md border border-gray-300 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-200 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
-                href="#"
+                href="https://hey.xyz/posts/0x2598-0x1a-DA-640219d9"
               >
                 Show Demo
               </Link>
