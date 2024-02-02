@@ -21,14 +21,11 @@ export default function UI({
   return (
     <>
       <Head>
-        <meta property="og:title" content="Frame" />
-        <meta property="og:image" content={image} />
+      <meta property="fc:frame" content="vLatest" />
+        <meta property="fc:frame:title" content="Frame" />
+        <meta property="fc:frame:image" content={image} />
         <meta property="hey:portal" content="vLatest" />
         <meta property="hey:portal:image" content={image} />
-        <meta property="fc:title" content="Frame" />
-        <meta property="fc:image" content={image} />
-        <meta property="fc:portal" content="vLatest" />
-        <meta property="fc:portal:image" content={image} />
         {buttons.map((button, index) => (
           <meta
             key={index}
