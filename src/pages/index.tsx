@@ -11,9 +11,9 @@ export default function Component() {
           <img
             alt="Cool Quiz Screenshot"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-            height="310"
-            src="/demo.jpg"
-            width="550"
+            height="auto"
+            src="/demo.png"
+            width="650"
           />
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
