@@ -45,7 +45,7 @@ function Screen(props: Props) {
           src="https://utfs.io/f/bc47bb64-67b1-4f38-b786-3f935a89463d-b70ida.jpg"
           tw="absolute w-full h-full"
         />
-        <div style={{ fontSize: 100, marginTop: "1rem", color: "black" }}>
+        <div style={{ fontSize: 100, marginTop: "1rem", color: "black",  textAlign: 'center' }}>
           {props.state.name ?? "Quiz"}
         </div>
       </div>
