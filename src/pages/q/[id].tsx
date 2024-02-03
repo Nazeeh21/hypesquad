@@ -31,28 +31,28 @@ export default function UI({
         <meta property="fc:frame:image" content={image} />
         {buttons.map((button, index) => (
           <meta
-            key={index}
+            key={"hey:portal" + index}
             property={`hey:portal:button:${index + 1}`}
             content={button}
           />
         ))}
         {buttons.map((button, index) => (
           <meta
-            key={index}
+            key={"fc:frame" + index}
             property={`fc:frame:button:${index + 1}`}
             content={button}
           />
         ))}
         {buttons.map((button, index) => (
           <meta
-            key={`type-${index}`}
+            key={`type-hey:portal-${index}`}
             property={`hey:portal:button:${index + 1}:type`}
             content="submit"
           />
         ))}
         {buttons.map((button, index) => (
           <meta
-            key={`type-${index}`}
+            key={`type-fc:frame-${index}`}
             property={`fc:frame:button:${index + 1}:type`}
             content="submit"
           />
@@ -153,14 +153,12 @@ function game(quiz: Quiz, state: State, action: number): State {
     return { index: 0, selected: null, traitsScore: null };
   }
 
+  let score = state.traitsScore ?? {};
+  const currentTrait =
+    quiz.questions[state.index - 1].answers[action - 2].trait;
+  score[currentTrait] = (score[currentTrait] ?? 0) + 1;
 
-    let score = state.traitsScore ?? {};
-    const currentTrait =
-      quiz.questions[state.index - 1].answers[action-2].trait;
-    score[currentTrait] = (score[currentTrait] ?? 0) + 1;
-
-
-    return { index: state.index + 1, selected: null, traitsScore: score };
+  return { index: state.index + 1, selected: null, traitsScore: score };
 }
 
 function render(
