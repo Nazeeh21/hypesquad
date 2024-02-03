@@ -38,6 +38,13 @@ export default function UI({
         ))}
         {buttons.map((button, index) => (
           <meta
+            key={index}
+            property={`fc:frame:button:${index + 1}`}
+            content={button}
+          />
+        ))}
+        {buttons.map((button, index) => (
+          <meta
             key={`type-${index}`}
             property={`hey:portal:button:${index + 1}:type`}
             content="submit"
